@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЭлектроРемонт 24/7 | Быстрый ремонт электроплит и приборов</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c6eaf;
+            --secondary: #e63946;
+            --dark: #1d3557;
+            --light: #f1faee;
+            --gray: #8d99ae;
+            --success: #2a9d8f;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            font-size: 28px;
+            color: var(--primary);
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .logo-text span {
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.0.3') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 24px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--secondary);
+            cursor: pointer;
+            font-size: 18px;
+        }
+        
+        .btn:hover {
+            background: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--primary);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Request Form Section */
+        .request-section {
+            background-color: var(--light);
+            padding: 80px 0;
+        }
+        
+        .request-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .request-info {
+            padding-right: 20px;
+        }
+        
+        .request-info h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .request-info ul {
+            list-style: none;
+            margin: 30px 0;
+        }
+        
+        .request-info ul li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .request-info ul li i {
+            color: var(--success);
+            font-size: 20px;
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+        
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: #1a5a99;
+        }
+        
+        /* Stats Section */
+        .stats {
+            padding: 60px 0;
+            background: var(--primary);
+            color: white;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+        
+        .stat-item h3 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .stat-item p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: """;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 80px;
+            color: var(--primary);
+            opacity: 0.1;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .testimonial-content {
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(rgba(44, 110, 175, 0.9), rgba(44, 110, 175, 0.9)), url('https://images.unsplash.com/photo-1581093458799-efb683e21c5f?ixlib=rb-4.0.3') no-repeat center center/cover;
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info i {
+            color: var(--secondary);
+            font-size: 18px;
+            margin-right: 10px;
+            min-width: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            margin-right: 10px;
+            transition: background 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .hero p {
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                flex-direction: column;
+                background: white;
+                width: 80%;
+                max-width: 300px;
+                height: calc(100vh - 80px);
+                padding: 20px;
+                transition: right 0.3s;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+            
+            nav ul.active {
+                right: 0;
+            }
+            
+            nav ul li {
+                margin: 0 0 15px 0;
+            }
+            
+            .hero {
+                padding: 70px 0;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .request-info {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div class="logo-text">ЭлектроРемонт<span>24/7</span></div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#request">Оставить заявку</a></li>
+                    <li><a href="#track">Статус заявки</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Профессиональный ремонт электроплит и бытовых приборов</h1>
+            <p>Вызов мастера в течение 1 часа. Гарантия на все виды работ. Оплата после ремонта.</p>
+            <a href="#request" class="btn">Оставить заявку</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наши услуги</h2>
+                <p>Мы специализируемся на ремонте всех типов электроприборов. Квалифицированные мастера с опытом работы от 5 лет.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-stove"></i>
+                    </div>
+                    <h3>Ремонт электроплит</h3>
+                    <p>Ремонт конфорок, ТЭНов, электроники, замена поврежденных элементов, диагностика неисправностей.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-oven"></i>
+                    </div>
+                    <h3>Ремонт духовых шкафов</h3>
+                    <p>Поломки нагревательных элементов, термостатов, электронного управления, дверных механизмов.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Индукционные панели</h3>
+                    <p>Ремонт электронных модулей, датчиков, блоков питания, замена стеклокерамики.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Гарантийное обслуживание</h3>
+                    <p>Официальный сервисный центр брендов Bosch, Electrolux, Samsung, LG, Gorenje и других.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Request Form Section -->
+    <section class="request-section" id="request">
+        <div class="container">
+            <div class="request-container">
+                <div class="request-info">
+                    <h2>Оставьте заявку на ремонт</h2>
+                    <p>Заполните простую форму и мы свяжемся с вами в течение 15 минут для уточнения деталей.</p>
+                    
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Бесплатная диагностика</li>
+                        <li><i class="fas fa-check-circle"></i> Выезд мастера в течение 1 часа</li>
+                        <li><i class="fas fa-check-circle"></i> Гарантия 12 месяцев на все работы</li>
+                        <li><i class="fas fa-check-circle"></i> Оплата только после выполнения ремонта</li>
+                        <li><i class="fas fa-check-circle"></i> Используем только оригинальные запчасти</li>
+                    </ul>
+                    
+                    <div class="contact-highlights">
+                        <p><strong>Круглосуточная поддержка:</strong> +7 (495) 123-45-67</p>
+                        <p><strong>Режим работы:</strong> Ежедневно с 8:00 до 22:00</p>
+                    </div>
+                </div>
+                
+                <div class="form-container">
+                    <form id="repairForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Ваше имя *</label>
+                                <input type="text" id="name" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Телефон *</label>
+                                <input type="tel" id="phone" class="form-control" placeholder="+7 (___) ___-__-__" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="applianceType">Тип прибора *</label>
+                            <select id="applianceType" class="form-control" required>
+                                <option value="">Выберите тип прибора</option>
+                                <option value="electric-stove">Электрическая плита</option>
+                                <option value="induction">Индукционная панель</option>
+                                <option value="oven">Духовой шкаф</option>
+                                <option value="cooktop">Варочная панель</option>
+                                <option value="other">Другой прибор</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="brand">Марка прибора</label>
+                                <input type="text" id="brand" class="form-control">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="model">Модель</label>
+                                <input type="text" id="model" class="form-control">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="problem">Описание проблемы *</label>
+                            <textarea id="problem" class="form-control" placeholder="Опишите, что не работает, какие звуки, ошибки и т.д." required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address">Адрес выполнения работ *</label>
+                            <input type="text" id="address" class="form-control" placeholder="Улица, дом, квартира" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="preferredDate">Желаемая дата</label>
+                                <input type="date" id="preferredDate" class="form-control">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="preferredTime">Желаемое время</label>
+                                <select id="preferredTime" class="form-control">
+                                    <option value="">Любое время</option>
+                                    <option value="morning">Утро (8:00-12:00)</option>
+                                    <option value="afternoon">День (12:00-16:00)</option>
+                                    <option value="evening">Вечер (16:00-20:00)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" required> 
+                                Согласен с <a href="#privacy" style="color: var(--primary);">политикой конфиденциальности</a>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary submit-btn">Отправить заявку</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>15000+</h3>
+                    <p>Выполненных заказов</p>
+                </div>
+                
+                <div class="stat-item">
+                    <h3>98%</h3>
+                    <p>Удовлетворенных клиентов</p>
+                </div>
+                
+                <div class="stat-item">
+                    <h3>60+</h3>
+                    <p>Квалифицированных мастеров</p>
+                </div>
+                
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>Круглосуточная поддержка</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="reviews">
+        <div class="container">
+            <div class="section-title">
+                <h2>Отзывы наших клиентов</h2>
+                <p>Мы ценим доверие наших клиентов и стремимся предоставлять только качественные услуги</p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>Быстро приехал мастер, обнаружил неисправность в конфорке электроплиты. Ремонт занял 40 минут, все работает как новое. Очень доволен оперативностью и профессионализмом.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">АК</div>
+                        <div>
+                            <strong>Анна Кузнецова</strong>
+                            <div class="rating" style="color: #ffc107; margin-top: 5px;">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>Сломалась индукционная панель Bosch. Мастер приехал через час после звонка, быстро определил проблему с блоком управления. Запчасть была в наличии, починили за один визит. Рекомендую!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ДС</div>
+                        <div>
+                            <strong>Дмитрий Соколов</strong>
+                            <div class="rating" style="color: #ffc107; margin-top: 5px;">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>Заказывал ремонт духовки. Очень порадовала вежливость мастера и качество работы. Все починили, дали гарантию на год. Цена оказалась ниже, чем в других сервисах. Спасибо!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ИП</div>
+                        <div>
+                            <strong>Иван Петров</strong>
+                            <div class="rating" style="color: #ffc107; margin-top: 5px;">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="track">
+        <div class="container">
+            <h2>Отслеживайте статус вашей заявки</h2>
+            <p>Введите номер заявки и телефон для просмотра текущего статуса ремонта</p>
+            
+            <div style="max-width: 500px; margin: 0 auto; display: flex; gap: 10px; flex-wrap: wrap;">
+                <input type="text" placeholder="Номер заявки" class="form-control" style="flex: 1; min-width: 200px;">
+                <input type="tel" placeholder="Ваш телефон" class="form-control" style="flex: 1; min-width: 200px;">
+                <button class="btn" style="min-width: 150px;">Проверить статус</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 20px;">
+                        <div class="logo-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="logo-text" style="color: white; font-size: 24px;">ЭлектроРемонт<span style="color: var(--secondary);">24/7</span></div>
+                    </div>
+                    <p style="color: #ddd; margin-bottom: 20px;">Профессиональный ремонт электроплит и бытовых приборов с гарантией качества. Работаем 24 часа в сутки без выходных.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Услуги</h3>
+                    <ul>
+                        <li><a href="#">Ремонт электроплит</a></li>
+                        <li><a href="#">Ремонт индукционных панелей</a></li>
+                        <li><a href="#">Ремонт духовых шкафов</a></li>
+                        <li><a href="#">Ремонт варочных панелей</a></li>
+                        <li><a href="#">Гарантийный ремонт</a></li>
+                        <li><a href="#">Диагностика неисправностей</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Информация</h3>
+                    <ul>
+                        <li><a href="#">О компании</a></li>
+                        <li><a href="#">Наши мастера</a></li>
+                        <li><a href="#">Цены на услуги</a></li>
+                        <li><a href="#">Гарантии</a></li>
+                        <li><a href="#">Частые вопросы</a></li>
+                        <li><a href="#">Блог</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col" id="contacts">
+                    <h3>Контакты</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>г. Москва, ул. Ленинская Слобода, д. 26</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+7 (495) 123-45-67</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@elektroremont24.ru</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Ежедневно с 8:00 до 22:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 ЭлектроРемонт 24/7. Все права защищены. Политика конфиденциальности | Пользовательское соглашение</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+            this.innerHTML = document.getElementById('navMenu').classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.getElementById('navMenu').classList.remove('active');
+                document.getElementById('mobileMenuBtn').innerHTML = '<i class="fas fa-bars"></i>';
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form submission
+        document.getElementById('repairForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real application, this would send data to a server
+            // Here we'll just show a success message
+            
+            const name = document.getElementById('name').value;
+            
+            // Show success message
+            alert(`Спасибо, ${name}! Ваша заявка принята. Мастер свяжется с вами в течение 15 минут.`);
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Phone number formatting (simplified)
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 0) {
+                value = '+7 (' + value.substring(0, 3);
+                if (value.length > 5) {
+                    value = value.substring(0, 5) + ') ' + value.substring(5, 8);
+                    if (value.length > 9) {
+                        value = value.substring(0, 9) + '-' + value.substring(9, 11);
+                        if (value.length > 12) {
+                            value = value.substring(0, 12) + '-' + value.substring(12, 14);
+                        }
+                    }
+                }
+                e.target.value = value;
+            }
+        });
+        
+        // Set min date for preferredDate to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('preferredDate').setAttribute('min', today);
+    </script>
+</body>
+</html>
